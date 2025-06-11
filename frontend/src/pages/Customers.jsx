@@ -15,7 +15,7 @@ function Customers() {
   });
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/customers')
+    fetch(`${process.env.REACT_APP_API_URL}/api/customers`)
       .then(res => res.json())
       .then(data => setCustomers(data))
       .catch(err => console.error('Cariler alınamadı:', err));
@@ -28,7 +28,7 @@ function Customers() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch('http://localhost:3001/api/customers', {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/customers`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form)
@@ -42,7 +42,7 @@ function Customers() {
   const handleDelete = (id) => {
     if (!window.confirm("Bu cariyi silmek istiyor musun?")) return;
 
-    fetch(`http://localhost:3001/api/customers/${id}`, { method: 'DELETE' })
+    fetch(`${process.env.REACT_APP_API_URL}/api/customers/${id}`, { method: 'DELETE' })
       .then(() => setCustomers(customers.filter(c => c.id !== id)))
       .catch(err => console.error("Silme hatası:", err));
   };

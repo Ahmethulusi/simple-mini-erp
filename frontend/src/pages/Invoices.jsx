@@ -10,15 +10,15 @@ function Invoices() {
   const [message, setMessage] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/invoices')
+    fetch(`${process.env.REACT_APP_API_URL}/api/invoices`)
       .then(res => res.json())
       .then(data => setInvoices(data));
 
-    fetch('http://localhost:3001/api/customers')
+    fetch(`${process.env.REACT_APP_API_URL}/api/customers`)
       .then(res => res.json())
       .then(data => setCustomers(data));
 
-    fetch('http://localhost:3001/api/products')
+    fetch(`${process.env.REACT_APP_API_URL}/api/products`)
       .then(res => res.json())
       .then(data => setProducts(data));
   }, []);
@@ -39,7 +39,7 @@ function Invoices() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch('http://localhost:3001/api/invoices', {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/invoices`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ customer_id: form.customer_id, items })

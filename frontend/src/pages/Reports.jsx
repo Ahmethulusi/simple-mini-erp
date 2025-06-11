@@ -8,45 +8,43 @@ function Reports() {
   const [history, setHistory] = useState(null);
   const [customerId, setCustomerId] = useState("");
 
-  const handleSearch = () => {
-    fetch(`http://localhost:3001/api/reports/customer-history/${customerId}`)
-      .then(res => res.json())
-      .then(data => {
-        if (data && data.top_products && Array.isArray(data.top_products)) {
-          setHistory(data);
-        } else {
-          console.error("Geçersiz veri yapısı:", data);
-          setHistory(null);
-        }
-      });
-  };
-  
+ const handleSearch = () => {
+  fetch(`${process.env.REACT_APP_API_URL}/api/reports/customer-history/${customerId}`)
+    .then(res => res.json())
+    .then(data => {
+      if (data && data.top_products && Array.isArray(data.top_products)) {
+        setHistory(data);
+      } else {
+        console.error("Geçersiz veri yapısı:", data);
+        setHistory(null);
+      }
+    });
+};
 
-  useEffect(() => {
-    fetch('http://localhost:3001/api/reports/monthly-revenue')
-      .then(res => res.json())
-      .then(data => setMonthlyRevenue(data));
-  }, []);
+useEffect(() => {
+  fetch(`${process.env.REACT_APP_API_URL}/api/reports/monthly-revenue`)
+    .then(res => res.json())
+    .then(data => setMonthlyRevenue(data));
+}, []);
 
+useEffect(() => {
+  fetch(`${process.env.REACT_APP_API_URL}/api/reports/low-stock`)
+    .then(res => res.json())
+    .then(data => setLowStockProducts(data));
+}, []);
 
-  useEffect(() => {
-    fetch('http://localhost:3001/api/reports/low-stock')
-      .then(res => res.json())
-      .then(data => setLowStockProducts(data));
-  }, []);
+useEffect(() => {
+  fetch(`${process.env.REACT_APP_API_URL}/api/reports/top-customers`)
+    .then(res => res.json())
+    .then(data => setTopCustomers(data));
+}, []);
 
+useEffect(() => {
+  fetch(`${process.env.REACT_APP_API_URL}/api/reports/top-products`)
+    .then(res => res.json())
+    .then(data => setTopProducts(data));
+}, []);
 
-  useEffect(() => {
-    fetch('http://localhost:3001/api/reports/top-customers')
-      .then(res => res.json())
-      .then(data => setTopCustomers(data));
-  }, []);
-
-  useEffect(() => {
-    fetch('http://localhost:3001/api/reports/top-products')
-      .then(res => res.json())
-      .then(data => setTopProducts(data));
-  }, []);
 
   return (
     <div className="p-6">

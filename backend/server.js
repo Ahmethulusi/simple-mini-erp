@@ -32,6 +32,11 @@ pool.query('SELECT * FROM products LIMIT 1', (err, res) => {
     }
 });
 
+app.get("/", (req, res) => {
+  res.send("Backend API is working 🚀");
+});
+
+
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {

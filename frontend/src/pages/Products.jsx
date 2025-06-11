@@ -17,7 +17,7 @@ function Products() {
   
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/products')
+    fetch(`${process.env.REACT_APP_API_URL}/api/products`)
       .then(res => res.json())
       .then(data => setProducts(data))
       .catch(err => console.error('Ürünler alınamadı:', err));
@@ -29,7 +29,7 @@ function Products() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch('http://localhost:3001/api/products', {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/products`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -50,7 +50,7 @@ function Products() {
   const handleDelete = (id) => {
     if (!window.confirm("Silmek istediğine emin misin?")) return;
 
-    fetch(`http://localhost:3001/api/products/${id}`, { method: 'DELETE' })
+    fetch(`${process.env.REACT_APP_API_URL}/api/products/${id}`, { method: 'DELETE' })
       .then(() => setProducts(products.filter(p => p.id !== id)))
       .catch(err => console.error("Silme hatası:", err));
   };
@@ -62,7 +62,7 @@ function Products() {
   const handleSearch = (searchTerm) => {
     if (!searchTerm) {
       // Arama kutusu boşsa tüm ürünleri getir
-      fetch('http://localhost:3001/api/products')
+      fetch(`${process.env.REACT_APP_API_URL}/api/products`)
         .then(res => res.json())
         .then(data => setProducts(data));
       return;

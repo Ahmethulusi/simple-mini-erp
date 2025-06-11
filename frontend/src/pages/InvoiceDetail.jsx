@@ -11,9 +11,9 @@ function InvoiceDetail() {
   useEffect(() => {
     const fetchData = async () => {
       const [itemsRes, productsRes, invoiceRes] = await Promise.all([
-        fetch(`http://localhost:3001/api/invoices/${id}/items`),
-        fetch(`http://localhost:3001/api/products`),
-        fetch(`http://localhost:3001/api/invoices/${id}`)
+        fetch(`${process.env.REACT_APP_API_URL}/api/invoices/${id}/items`),
+        fetch(`${process.env.REACT_APP_API_URL}/api/products`),
+        fetch(`${process.env.REACT_APP_API_URL}/api/invoices/${id}`)
       ]);
   
       const itemsData = await itemsRes.json();
@@ -37,7 +37,7 @@ function InvoiceDetail() {
   const handleAdd = async (e) => {
     e.preventDefault();
 
-    const res = await fetch(`http://localhost:3001/api/invoices/${id}/items`, {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/invoices/${id}/items`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

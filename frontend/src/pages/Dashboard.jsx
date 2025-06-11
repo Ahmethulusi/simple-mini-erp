@@ -5,7 +5,7 @@ function Dashboard() {
   const [summary, setSummary] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/dashboard/summary')
+    fetch(`${process.env.REACT_APP_API_URL}/api/dashboard/summary`)
       .then(res => res.json())
       .then(data => setSummary(data))
       .catch(err => console.error('Özet alınamadı:', err));

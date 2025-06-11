@@ -9,15 +9,15 @@ function CustomerDetail() {
   const [activeTab, setActiveTab] = useState('info');
 
   useEffect(() => {
-    fetch(`http://localhost:3001/api/customers/${id}`)
+    fetch(`${process.env.REACT_APP_API_URL}/api/customers/${id}`)
       .then(res => res.json())
       .then(data => setCustomer(data));
 
-    fetch(`http://localhost:3001/api/reports/customer-history/${id}`)
+    fetch(`${process.env.REACT_APP_API_URL}/api/reports/customer-history/${id}`)
       .then(res => res.json())
       .then(data => setHistory(data));
 
-      fetch(`http://localhost:3001/api/invoices/customer/${id}`)
+      fetch(`${process.env.REACT_APP_API_URL}/api/invoices/customer/${id}`)
 
       .then(res => res.json())
       .then(data => setInvoices(data));
@@ -29,7 +29,7 @@ function CustomerDetail() {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    await fetch(`http://localhost:3001/api/customers/${id}`, {
+    await fetch(`${process.env.REACT_APP_API_URL}/api/customers/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(customer)
