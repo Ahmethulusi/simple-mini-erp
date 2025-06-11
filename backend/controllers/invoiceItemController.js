@@ -1,6 +1,6 @@
 const db = require('../models/db');
 const DiscountService = require('../services/InvoiceService');
-const VatService = require('../services/vatService');
+const VatService = require('../services/VatService');
 const VatSelector = require('../strategies/VAT/VatSelector');
 const DiscountStrategySelector = require('../strategies/Discount/DiscountStrategySelector');
 
