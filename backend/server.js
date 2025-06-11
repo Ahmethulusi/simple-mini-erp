@@ -33,7 +33,7 @@ pool.query('SELECT * FROM products LIMIT 1', (err, res) => {
 });
 
 
-const PORT = 3001;
+const PORT = process.env.PORT || 4000
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
