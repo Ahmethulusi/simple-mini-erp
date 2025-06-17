@@ -8,5 +8,5 @@ class VatService {
     }
   }
   
-module.export = VatService;
+module.exports = VatService;
   

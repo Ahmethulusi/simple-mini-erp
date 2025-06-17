@@ -10,4 +10,4 @@ class InvoiceService {
     }
 }
 
-module.export = InvoiceService;
+module.exports = InvoiceService;
