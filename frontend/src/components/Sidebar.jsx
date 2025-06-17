@@ -16,14 +16,7 @@ function Sidebar() {
         <NavLink to="/products" className={linkStyle}>📦 Ürünler</NavLink>
         <NavLink to="/customers" className={linkStyle}>👥 Cariler</NavLink>
         <NavLink to="/invoices" className={linkStyle}>🧾 Faturalar</NavLink>
-        {/* <NavLink
-        to="/reports"
-        className={({ isActive }) =>
-          `block px-4 py-2 rounded hover:bg-gray-200 ${isActive ? 'bg-gray-100 font-semibold' : ''}`
-        }
-      >
-        📊 Raporlar
-      </NavLink> */}
+        <NavLink to="/reports" className={linkStyle}>📊 Raporlar</NavLink>
       </nav>
     </aside>
   );
