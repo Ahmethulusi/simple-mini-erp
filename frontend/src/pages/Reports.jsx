@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import RevenueChart from '../components/RevenueChart';
 
 function Reports() {
   const [topProducts, setTopProducts] = useState([]);
@@ -120,6 +121,9 @@ useEffect(() => {
           ))}
         </tbody>
       </table>
+      <div className="max-w-xl mx-auto mb-8">
+        <RevenueChart />
+      </div>
 
       <div className="p-6 max-w-5xl mx-auto space-y-8">
 

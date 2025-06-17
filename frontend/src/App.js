@@ -5,7 +5,7 @@ import Dashboard from './pages/Dashboard';
 import MainLayout from './layout/MainLayout';
 import Invoices from './pages/Invoices';
 import InvoiceDetail from './pages/InvoiceDetail';
-// import Reports from './pages/Reports';
+import Reports from './pages/Reports';
 import CustomerDetail from './pages/CustomerDetail';
 import ProductDetail from './pages/ProductDetail';
 
@@ -19,7 +19,7 @@ function App() {
         <Routes>
 
           <Route path="/" element={<Dashboard />} />
-          {/* <Route path="/reports" element={<Reports />} /> */}
+          <Route path="/reports" element={<Reports />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<ProductDetail />} />
           <Route path="/customers" element={<Customers />} />
